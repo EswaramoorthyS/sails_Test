@@ -14,7 +14,8 @@
     "sails": "^1.5.8",
     "sails-hook-grunt": "^5.0.0",
     "sails-hook-orm": "^4.0.0",
-    "sails-hook-sockets": "^2.0.0"
+    "sails-hook-sockets": "^2.0.0",
+    "create-manager": "file:./path/to/create-manager"
   },
   "devDependencies": {
     "eslint": "5.16.0"
