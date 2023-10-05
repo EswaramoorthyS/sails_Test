@@ -1,20 +1,23 @@
-// index.js
-const express = require('express')
+const express = require('express');
+const Sails = require('sails');
 
-const app = express()
-const PORT = 4000
+const app = express();
 
-app.listen(PORT, () => {
-  console.log(`API listening on PORT ${PORT} `)
-})
+async function startServer() {
+  const sails = new Sails();
 
-app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳')
-})
+  await sails.lift({
+    // Sails.js configuration options go here
+  });
 
-app.get('/about', (req, res) => {
-  res.send('This is my about route..... ')
-})
+  app.use(sails.hooks.http.app);
+}
 
-// Export the Express API
-module.exports = app
+startServer();
+
+// Define your API routes here (e.g., app.get('/api/endpoint', ...))
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
